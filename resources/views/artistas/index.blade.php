@@ -5,9 +5,12 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="fas fa-music me-2"></i>Gestión de Artistas</h2>
-            <a href="{{ route('artistas.create') }}" class="btn btn-primary">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="gradient-text mb-2"><i class="fas fa-music me-2"></i>Gestión de Artistas</h2>
+                <p class="text-muted">Administra el catálogo de artistas y sus géneros musicales</p>
+            </div>
+            <a href="{{ route('artistas.create') }}" class="btn btn-primary pulse-animation">
                 <i class="fas fa-plus me-1"></i>Nuevo Artista
             </a>
         </div>
@@ -15,7 +18,15 @@
         <!-- Lista de Artistas -->
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Lista de Artistas ({{ $artistas->count() }} artistas registrados)</h5>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1">Lista de Artistas</h5>
+                        <small class="opacity-75">{{ $artistas->count() }} artistas registrados</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <span class="badge bg-info">{{ $artistas->count() }}</span>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 @if($artistas->count() > 0)

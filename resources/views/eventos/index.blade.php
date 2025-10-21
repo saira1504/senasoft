@@ -5,36 +5,46 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="fas fa-calendar me-2"></i>Gestión de Eventos</h2>
-            <a href="{{ route('eventos.create') }}" class="btn btn-primary">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="gradient-text mb-2"><i class="fas fa-calendar me-2"></i>Gestión de Eventos</h2>
+                <p class="text-muted">Administra todos tus eventos de manera eficiente</p>
+            </div>
+            <a href="{{ route('eventos.create') }}" class="btn btn-primary pulse-animation">
                 <i class="fas fa-plus me-1"></i>Nuevo Evento
             </a>
         </div>
 
         <!-- Filtros para RF5: Consulta por fecha, municipio o departamento -->
-        <div class="card mb-4">
+        <div class="card mb-5 glass-effect">
             <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Filtros de Búsqueda</h5>
+                <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Filtros de Búsqueda Avanzada</h5>
+                <small class="opacity-75">Encuentra eventos específicos usando los filtros</small>
             </div>
             <div class="card-body">
-                <form method="GET" action="{{ route('eventos.index') }}" class="row g-3">
+                <form method="GET" action="{{ route('eventos.index') }}" class="row g-4">
                     <div class="col-md-3">
-                        <label for="fecha" class="form-label">Fecha del Evento</label>
+                        <label for="fecha" class="form-label fw-bold">
+                            <i class="fas fa-calendar-day me-1"></i>Fecha del Evento
+                        </label>
                         <input type="date" class="form-control" id="fecha" name="fecha" value="{{ request('fecha') }}">
                     </div>
                     <div class="col-md-3">
-                        <label for="municipio" class="form-label">Municipio</label>
+                        <label for="municipio" class="form-label fw-bold">
+                            <i class="fas fa-map-marker-alt me-1"></i>Municipio
+                        </label>
                         <input type="text" class="form-control" id="municipio" name="municipio" 
                                placeholder="Buscar por municipio" value="{{ request('municipio') }}">
                     </div>
                     <div class="col-md-3">
-                        <label for="departamento" class="form-label">Departamento</label>
+                        <label for="departamento" class="form-label fw-bold">
+                            <i class="fas fa-building me-1"></i>Departamento
+                        </label>
                         <input type="text" class="form-control" id="departamento" name="departamento" 
                                placeholder="Buscar por departamento" value="{{ request('departamento') }}">
                     </div>
                     <div class="col-md-3 d-flex align-items-end">
-                        <button type="submit" class="btn btn-outline-primary me-2">
+                        <button type="submit" class="btn btn-primary me-2">
                             <i class="fas fa-search me-1"></i>Buscar
                         </button>
                         <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
@@ -48,7 +58,15 @@
         <!-- Lista de Eventos -->
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Lista de Eventos ({{ $eventos->count() }} eventos encontrados)</h5>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1">Lista de Eventos</h5>
+                        <small class="opacity-75">{{ $eventos->count() }} eventos encontrados</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <span class="badge bg-primary">{{ $eventos->count() }}</span>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 @if($eventos->count() > 0)

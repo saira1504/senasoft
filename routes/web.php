@@ -18,7 +18,7 @@ use App\Http\Controllers\BoletaController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('eventos.index');
+    return view('dashboard');
 });
 
 // Rutas para Eventos (RF1, RF5)
