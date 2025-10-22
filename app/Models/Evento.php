@@ -16,7 +16,9 @@ class Evento extends Model
         'fecha_hora_fin',
         'municipio',
         'departamento',
-        'imagen_evento'
+        'imagen_evento',
+        'localidad_id'
+        
     ];
 
     protected $casts = [
@@ -34,5 +36,9 @@ class Evento extends Model
     public function boletas()
     {
         return $this->hasMany(Boleta::class);
+    }
+      public function localidad()
+    {
+        return $this->belongsTo(Localidad::class, 'localidad_id');
     }
 }
