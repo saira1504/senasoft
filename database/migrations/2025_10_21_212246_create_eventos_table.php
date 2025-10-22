@@ -21,6 +21,7 @@ class CreateEventosTable extends Migration
             $table->datetime('fecha_hora_fin'); // RF1: fecha y hora de fin
             $table->string('municipio'); // RF5: para consultas por municipio
             $table->string('departamento'); // RF5: para consultas por departamento
+            $table->string('imagen_evento')->nullable(); // Imagen del evento
             $table->timestamps();
         });
     }

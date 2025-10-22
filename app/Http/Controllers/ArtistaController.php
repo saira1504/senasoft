@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArtistaController extends Controller
 {
@@ -37,16 +38,24 @@ class ArtistaController extends Controller
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'genero_musical' => 'required|string|max:255',
-            'ciudad_natal' => 'required|string|max:255'
+            'ciudad_natal' => 'required|string|max:255',
+            'imagen_artista' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        Artista::create($request->only([
+        $data = $request->only([
             'codigo_artista',
             'nombres',
             'apellidos',
             'genero_musical',
             'ciudad_natal'
-        ]));
+        ]);
+
+        // Manejar subida de imagen
+        if ($request->hasFile('imagen_artista')) {
+            $data['imagen_artista'] = $request->file('imagen_artista')->store('artistas', 'public');
+        }
+
+        Artista::create($data);
 
         return redirect()->route('artistas.index')
             ->with('success', 'Artista creado exitosamente');
@@ -79,16 +88,28 @@ class ArtistaController extends Controller
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'genero_musical' => 'required|string|max:255',
-            'ciudad_natal' => 'required|string|max:255'
+            'ciudad_natal' => 'required|string|max:255',
+            'imagen_artista' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $artista->update($request->only([
+        $data = $request->only([
             'codigo_artista',
             'nombres',
             'apellidos',
             'genero_musical',
             'ciudad_natal'
-        ]));
+        ]);
+
+        // Manejar subida de imagen
+        if ($request->hasFile('imagen_artista')) {
+            // Eliminar imagen anterior si existe
+            if ($artista->imagen_artista) {
+                Storage::disk('public')->delete($artista->imagen_artista);
+            }
+            $data['imagen_artista'] = $request->file('imagen_artista')->store('artistas', 'public');
+        }
+
+        $artista->update($data);
 
         return redirect()->route('artistas.index')
             ->with('success', 'Artista actualizado exitosamente');

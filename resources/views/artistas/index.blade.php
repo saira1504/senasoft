@@ -49,7 +49,20 @@
                                         <span class="badge bg-primary">{{ $artista->codigo_artista }}</span>
                                     </td>
                                     <td>
-                                        <strong>{{ $artista->nombres }} {{ $artista->apellidos }}</strong>
+                                        <div class="d-flex align-items-center">
+                                            @if($artista->imagen_artista)
+                                                <img src="{{ Storage::url($artista->imagen_artista) }}" 
+                                                     alt="{{ $artista->nombres }} {{ $artista->apellidos }}" 
+                                                     class="img-thumbnail me-2" 
+                                                     style="width: 40px; height: 40px; object-fit: cover;">
+                                            @else
+                                                <div class="bg-light rounded me-2 d-flex align-items-center justify-content-center" 
+                                                     style="width: 40px; height: 40px;">
+                                                    <i class="fas fa-user text-muted"></i>
+                                                </div>
+                                            @endif
+                                            <strong>{{ $artista->nombres }} {{ $artista->apellidos }}</strong>
+                                        </div>
                                     </td>
                                     <td>
                                         <span class="badge bg-info">{{ $artista->genero_musical }}</span>

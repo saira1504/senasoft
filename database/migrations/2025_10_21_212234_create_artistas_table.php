@@ -20,6 +20,7 @@ class CreateArtistasTable extends Migration
             $table->string('apellidos'); // RF4: apellidos del artista
             $table->string('genero_musical'); // RF4: género de música del artista
             $table->string('ciudad_natal'); // RF4: ciudad natal del artista
+            $table->string('imagen_artista')->nullable(); // Imagen del artista
             $table->timestamps();
         });
     }

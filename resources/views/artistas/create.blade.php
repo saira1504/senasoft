@@ -13,7 +13,7 @@
                 <small class="text-muted">RF4: Módulo de artistas con código, nombres, género musical y ciudad natal</small>
             </div>
             <div class="card-body">
-                <form action="{{ route('artistas.store') }}" method="POST">
+                <form action="{{ route('artistas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="row">
@@ -89,6 +89,18 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imagen_artista" class="form-label">
+                            <i class="fas fa-image me-1"></i>Imagen del Artista
+                        </label>
+                        <input type="file" class="form-control @error('imagen_artista') is-invalid @enderror" 
+                               id="imagen_artista" name="imagen_artista" accept="image/*">
+                        <div class="form-text">Formatos permitidos: JPG, PNG, GIF. Tamaño máximo: 2MB</div>
+                        @error('imagen_artista')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="d-flex justify-content-between">

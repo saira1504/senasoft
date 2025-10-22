@@ -7,10 +7,10 @@
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center mb-5">
             <div>
-                <h2 class="gradient-text mb-2"><i class="fas fa-calendar me-2"></i>Gestión de Eventos</h2>
+                <h2 class="gradient-text mb-2"><i class="fas fa-calendar me-2"></i>Gestión de Eventos</h2>  
                 <p class="text-muted">Administra todos tus eventos de manera eficiente</p>
             </div>
-            <a href="{{ route('eventos.create') }}" class="btn btn-primary pulse-animation">
+            <a href="{{ route('eventos.admin.create') }}" class="btn btn-primary pulse-animation">
                 <i class="fas fa-plus me-1"></i>Nuevo Evento
             </a>
         </div>
@@ -22,7 +22,7 @@
                 <small class="opacity-75">Encuentra eventos específicos usando los filtros</small>
             </div>
             <div class="card-body">
-                <form method="GET" action="{{ route('eventos.index') }}" class="row g-4">
+                <form method="GET" action="{{ route('eventos.admin.index') }}" class="row g-4">
                     <div class="col-md-3">
                         <label for="fecha" class="form-label fw-bold">
                             <i class="fas fa-calendar-day me-1"></i>Fecha del Evento
@@ -47,7 +47,8 @@
                         <button type="submit" class="btn btn-primary me-2">
                             <i class="fas fa-search me-1"></i>Buscar
                         </button>
-                        <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
+                        <!-- 🔧 Corregido aquí -->
+                        <a href="{{ route('eventos.admin.index') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-times me-1"></i>Limpiar
                         </a>
                     </div>
@@ -87,15 +88,24 @@
                             <tbody>
                                 @foreach($eventos as $evento)
                                 <tr>
+                                    <td><span class="badge bg-primary">{{ $evento->id }}</span></td>
                                     <td>
-                                        <span class="badge bg-primary">{{ $evento->id }}</span>
+                                        <div class="d-flex align-items-center">
+                                            @if($evento->imagen_evento)
+                                                <img src="{{ Storage::url($evento->imagen_evento) }}" 
+                                                     alt="{{ $evento->nombre_evento }}" 
+                                                     class="img-thumbnail me-2" 
+                                                     style="width: 40px; height: 40px; object-fit: cover;">
+                                            @else
+                                                <div class="bg-light rounded me-2 d-flex align-items-center justify-content-center" 
+                                                     style="width: 40px; height: 40px;">
+                                                    <i class="fas fa-image text-muted"></i>
+                                                </div>
+                                            @endif
+                                            <strong>{{ $evento->nombre_evento }}</strong>
+                                        </div>
                                     </td>
-                                    <td>
-                                        <strong>{{ $evento->nombre_evento }}</strong>
-                                    </td>
-                                    <td>
-                                        <small class="text-muted">{{ Str::limit($evento->descripcion, 50) }}</small>
-                                    </td>
+                                    <td><small class="text-muted">{{ Str::limit($evento->descripcion, 50) }}</small></td>
                                     <td>
                                         <small>
                                             <i class="fas fa-calendar me-1"></i>{{ $evento->fecha_hora_inicio->format('d/m/Y H:i') }}<br>
@@ -137,13 +147,13 @@
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('eventos.show', $evento) }}" class="btn btn-sm btn-outline-info" title="Ver detalles">
+                                            <a href="{{ route('eventos.admin.show', $evento) }}" class="btn btn-sm btn-outline-info" title="Ver detalles">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('eventos.edit', $evento) }}" class="btn btn-sm btn-outline-warning" title="Editar">
+                                            <a href="{{ route('eventos.admin.edit', $evento) }}" class="btn btn-sm btn-outline-warning" title="Editar">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('eventos.destroy', $evento) }}" method="POST" class="d-inline" 
+                                            <form action="{{ route('eventos.admin.destroy', $evento) }}" method="POST" class="d-inline" 
                                                   onsubmit="return confirm('¿Estás seguro de eliminar este evento?')">
                                                 @csrf
                                                 @method('DELETE')
@@ -163,7 +173,7 @@
                         <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
                         <h5 class="text-muted">No se encontraron eventos</h5>
                         <p class="text-muted">Crea tu primer evento para comenzar</p>
-                        <a href="{{ route('eventos.create') }}" class="btn btn-primary">
+                        <a href="{{ route('eventos.admin.create') }}" class="btn btn-primary">
                             <i class="fas fa-plus me-1"></i>Crear Primer Evento
                         </a>
                     </div>

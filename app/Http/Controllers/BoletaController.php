@@ -16,7 +16,13 @@ class BoletaController extends Controller
     public function index()
     {
         $boletas = Boleta::with(['evento', 'localidad'])->orderBy('created_at', 'desc')->get();
-        return view('boletas.index', compact('boletas'));
+        
+        // Mostrar vista diferente según el rol del usuario
+        if (auth()->user()->isAdmin()) {
+            return view('boletas.admin.index', compact('boletas'));
+        } else {
+            return view('boletas.comprador.index', compact('boletas'));
+        }
     }
 
     /**
@@ -27,7 +33,7 @@ class BoletaController extends Controller
     {
         $eventos = Evento::orderBy('nombre_evento')->get();
         $localidades = Localidad::orderBy('nombre_localidad')->get();
-        return view('boletas.create', compact('eventos', 'localidades'));
+        return view('boletas.admin.create', compact('eventos', 'localidades'));
     }
 
     /**
@@ -69,7 +75,13 @@ class BoletaController extends Controller
     public function show(Boleta $boleta)
     {
         $boleta->load(['evento.artistas', 'localidad']);
-        return view('boletas.show', compact('boleta'));
+        
+        // Mostrar vista diferente según el rol del usuario
+        if (auth()->user()->isAdmin()) {
+            return view('boletas.admin.show', compact('boleta'));
+        } else {
+            return view('boletas.comprador.show', compact('boleta'));
+        }
     }
 
     /**
@@ -79,7 +91,7 @@ class BoletaController extends Controller
     {
         $eventos = Evento::orderBy('nombre_evento')->get();
         $localidades = Localidad::orderBy('nombre_localidad')->get();
-        return view('boletas.edit', compact('boleta', 'eventos', 'localidades'));
+        return view('boletas.admin.edit', compact('boleta', 'eventos', 'localidades'));
     }
 
     /**

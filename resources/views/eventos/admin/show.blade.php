@@ -11,7 +11,7 @@
                 <span class="badge bg-primary ms-2">Código: {{ $evento->id }}</span>
             </h2>
             <div>
-                <a href="{{ route('eventos.edit', $evento) }}" class="btn btn-warning">
+                <a href="{{ route('eventos.admin.edit', $evento) }}" class="btn btn-warning">
                     <i class="fas fa-edit me-1"></i>Editar
                 </a>
                 <a href="{{ route('eventos.index') }}" class="btn btn-secondary">
@@ -28,6 +28,14 @@
                         <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Información del Evento</h5>
                     </div>
                     <div class="card-body">
+                        @if($evento->imagen_evento)
+                            <div class="text-center mb-4">
+                                <img src="{{ Storage::url($evento->imagen_evento) }}" 
+                                     alt="{{ $evento->nombre_evento }}" 
+                                     class="img-fluid rounded" 
+                                     style="max-height: 300px; object-fit: cover;">
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <h6><i class="fas fa-tag me-2"></i>Nombre del Evento</h6>

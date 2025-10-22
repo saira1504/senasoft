@@ -14,7 +14,8 @@ class Artista extends Model
         'nombres',
         'apellidos',
         'genero_musical',
-        'ciudad_natal'
+        'ciudad_natal',
+        'imagen_artista'
     ];
 
     // Relación muchos a muchos con eventos

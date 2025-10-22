@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use App\Models\Artista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventoController extends Controller
 {
@@ -15,6 +16,7 @@ class EventoController extends Controller
     public function index(Request $request)
     {
         $query = Evento::with(['artistas', 'boletas.localidad']);
+        
 
         // Filtros para RF5
         if ($request->filled('fecha')) {
@@ -31,7 +33,12 @@ class EventoController extends Controller
 
         $eventos = $query->orderBy('fecha_hora_inicio')->get();
 
-        return view('eventos.index', compact('eventos'));
+        // Mostrar vista diferente según el rol del usuario
+        if (auth()->user()->isAdmin()) {
+            return view('eventos.admin.index', compact('eventos'));
+        } else {
+            return view('eventos.comprador.index', compact('eventos'));
+        }
     }
 
     /**
@@ -40,7 +47,7 @@ class EventoController extends Controller
     public function create()
     {
         $artistas = Artista::all();
-        return view('eventos.create', compact('artistas'));
+        return view('eventos.admin.create', compact('artistas'));
     }
 
     /**
@@ -56,24 +63,32 @@ class EventoController extends Controller
             'fecha_hora_fin' => 'required|date|after:fecha_hora_inicio',
             'municipio' => 'required|string|max:255',
             'departamento' => 'required|string|max:255',
+            'imagen_evento' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'artistas' => 'array'
         ]);
 
-        $evento = Evento::create($request->only([
+        $data = $request->only([
             'nombre_evento',
             'descripcion',
             'fecha_hora_inicio',
             'fecha_hora_fin',
             'municipio',
             'departamento'
-        ]));
+        ]);
+
+        // Manejar subida de imagen
+        if ($request->hasFile('imagen_evento')) {
+            $data['imagen_evento'] = $request->file('imagen_evento')->store('eventos', 'public');
+        }
+
+        $evento = Evento::create($data);
 
         // Asociar artistas si se seleccionaron
         if ($request->has('artistas')) {
             $evento->artistas()->attach($request->artistas);
         }
 
-        return redirect()->route('eventos.index')
+        return redirect()->route('eventos.admin.index')
             ->with('success', 'Evento creado exitosamente. Código: ' . $evento->id);
     }
 
@@ -83,7 +98,13 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         $evento->load(['artistas', 'boletas.localidad']);
-        return view('eventos.show', compact('evento'));
+        
+        // Mostrar vista diferente según el rol del usuario
+        if (auth()->user()->isAdmin()) {
+            return view('eventos.admin.show', compact('evento'));
+        } else {
+            return view('eventos.comprador.show', compact('evento'));
+        }
     }
 
     /**
@@ -93,7 +114,7 @@ class EventoController extends Controller
     {
         $artistas = Artista::all();
         $evento->load('artistas');
-        return view('eventos.edit', compact('evento', 'artistas'));
+        return view('eventos.admin.edit', compact('evento', 'artistas'));
     }
 
     /**
@@ -108,17 +129,29 @@ class EventoController extends Controller
             'fecha_hora_fin' => 'required|date|after:fecha_hora_inicio',
             'municipio' => 'required|string|max:255',
             'departamento' => 'required|string|max:255',
+            'imagen_evento' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'artistas' => 'array'
         ]);
 
-        $evento->update($request->only([
+        $data = $request->only([
             'nombre_evento',
             'descripcion',
             'fecha_hora_inicio',
             'fecha_hora_fin',
             'municipio',
             'departamento'
-        ]));
+        ]);
+
+        // Manejar subida de imagen
+        if ($request->hasFile('imagen_evento')) {
+            // Eliminar imagen anterior si existe
+            if ($evento->imagen_evento) {
+                Storage::disk('public')->delete($evento->imagen_evento);
+            }
+            $data['imagen_evento'] = $request->file('imagen_evento')->store('eventos', 'public');
+        }
+
+        $evento->update($data);
 
         // Actualizar artistas
         if ($request->has('artistas')) {
@@ -127,7 +160,7 @@ class EventoController extends Controller
             $evento->artistas()->detach();
         }
 
-        return redirect()->route('eventos.index')
+        return redirect()->route('eventos.admin.index')
             ->with('success', 'Evento actualizado exitosamente');
     }
 
@@ -137,7 +170,7 @@ class EventoController extends Controller
     public function destroy(Evento $evento)
     {
         $evento->delete();
-        return redirect()->route('eventos.index')
+        return redirect()->route('eventos.admin.index')
             ->with('success', 'Evento eliminado exitosamente');
     }
 }

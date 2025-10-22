@@ -436,12 +436,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                @auth
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('eventos.index') }}">
+                        <a class="nav-link" href="{{ route('eventos.admin.index') }}">
                             <i class="fas fa-calendar me-1"></i>Eventos
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('boletas.index') }}">
+                            <i class="fas fa-ticket-alt me-1"></i>Boletas
+                        </a>
+                    </li>
+                    @if(Auth::user()->isComprador())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('compras.historial') }}">
+                            <i class="fas fa-shopping-cart me-1"></i>Mis Compras
+                        </a>
+                    </li>
+                    @endif
+                    @if(Auth::user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('artistas.index') }}">
                             <i class="fas fa-music me-1"></i>Artistas
@@ -452,12 +466,67 @@
                             <i class="fas fa-map-marker-alt me-1"></i>Localidades
                         </a>
                     </li>
+                    @endif
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>{{ Auth::user()->name }}
+                            @if(Auth::user()->isAdmin())
+                                <span class="badge bg-danger ms-1">Admin</span>
+                            @elseif(Auth::user()->isComprador())
+                                <span class="badge bg-success ms-1">Comprador</span>
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">
+                                <small class="text-muted">
+                                    @if(Auth::user()->isAdmin())
+                                        <i class="fas fa-crown me-1"></i>Administrador
+                                    @elseif(Auth::user()->isComprador())
+                                        <i class="fas fa-shopping-cart me-1"></i>Comprador
+                                    @endif
+                                </small>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('perfil.show') }}">
+                                    <i class="fas fa-user me-1"></i>Mi Perfil
+                                </a>
+                            </li>
+                            @if(Auth::user()->isComprador())
+                            <li>
+                                <a class="dropdown-item" href="{{ route('compras.historial') }}">
+                                    <i class="fas fa-shopping-cart me-1"></i>Mis Compras
+                                </a>
+                            </li>
+                            @endif
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt me-1"></i>Cerrar Sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                @else
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('boletas.index') }}">
-                            <i class="fas fa-ticket-alt me-1"></i>Boletas
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <i class="fas fa-sign-in-alt me-1"></i>Iniciar Sesión
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">
+                            <i class="fas fa-user-plus me-1"></i>Registrarse
                         </a>
                     </li>
                 </ul>
+                @endauth
             </div>
         </div>
     </nav>

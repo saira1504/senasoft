@@ -13,7 +13,7 @@
                 <small class="text-muted">RF1: Registro de eventos con código auto-incrementable</small>
             </div>
             <div class="card-body">
-                <form action="{{ route('eventos.store') }}" method="POST">
+                <form action="{{ route('eventos.admin.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="row">
@@ -60,6 +60,18 @@
                         <textarea class="form-control @error('descripcion') is-invalid @enderror" 
                                   id="descripcion" name="descripcion" rows="4" required>{{ old('descripcion') }}</textarea>
                         @error('descripcion')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imagen_evento" class="form-label">
+                            <i class="fas fa-image me-1"></i>Imagen del Evento
+                        </label>
+                        <input type="file" class="form-control @error('imagen_evento') is-invalid @enderror" 
+                               id="imagen_evento" name="imagen_evento" accept="image/*">
+                        <div class="form-text">Formatos permitidos: JPG, PNG, GIF. Tamaño máximo: 2MB</div>
+                        @error('imagen_evento')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -120,7 +132,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('eventos.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('eventos.admin.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left me-1"></i>Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary">

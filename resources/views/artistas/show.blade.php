@@ -28,6 +28,14 @@
                         <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Información del Artista</h5>
                     </div>
                     <div class="card-body">
+                        @if($artista->imagen_artista)
+                            <div class="text-center mb-4">
+                                <img src="{{ Storage::url($artista->imagen_artista) }}" 
+                                     alt="{{ $artista->nombres }} {{ $artista->apellidos }}" 
+                                     class="img-fluid rounded" 
+                                     style="max-height: 300px; object-fit: cover;">
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <h6><i class="fas fa-hashtag me-2"></i>Código del Artista</h6>
@@ -70,7 +78,7 @@
                                                     <i class="fas fa-map-marker-alt me-1"></i>{{ $evento->municipio }}, {{ $evento->departamento }}
                                                 </small>
                                             </p>
-                                            <a href="{{ route('eventos.show', $evento) }}" class="btn btn-sm btn-outline-primary">
+                                            <a href="{{ route('eventos.admin.show', $evento) }}" class="btn btn-sm btn-outline-primary">
                                                 <i class="fas fa-eye me-1"></i>Ver Evento
                                             </a>
                                         </div>
@@ -82,7 +90,7 @@
                             <div class="text-center py-3">
                                 <i class="fas fa-calendar-times fa-2x text-muted mb-2"></i>
                                 <p class="text-muted">Este artista no tiene eventos asignados</p>
-                                <a href="{{ route('eventos.create') }}" class="btn btn-outline-primary">
+                                <a href="{{ route('eventos.admin.create') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-plus me-1"></i>Crear Evento
                                 </a>
                             </div>

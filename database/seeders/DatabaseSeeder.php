@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Crear roles
+        $this->call(RoleSeeder::class);
+
         // Crear localidades de ejemplo
         \App\Models\Localidad::create([
             'codigo_localidad' => 'VIP',

@@ -13,7 +13,7 @@
                 <small class="text-muted">Código: {{ $evento->id }}</small>
             </div>
             <div class="card-body">
-                <form action="{{ route('eventos.update', $evento) }}" method="POST">
+                <form action="{{ route('eventos.admin.update', $evento) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
@@ -61,6 +61,24 @@
                         <textarea class="form-control @error('descripcion') is-invalid @enderror" 
                                   id="descripcion" name="descripcion" rows="4" required>{{ old('descripcion', $evento->descripcion) }}</textarea>
                         @error('descripcion')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imagen_evento" class="form-label">
+                            <i class="fas fa-image me-1"></i>Imagen del Evento
+                        </label>
+                        @if($evento->imagen_evento)
+                            <div class="mb-2">
+                                <img src="{{ Storage::url($evento->imagen_evento) }}" alt="Imagen actual" class="img-thumbnail" style="max-width: 200px;">
+                                <div class="form-text">Imagen actual</div>
+                            </div>
+                        @endif
+                        <input type="file" class="form-control @error('imagen_evento') is-invalid @enderror" 
+                               id="imagen_evento" name="imagen_evento" accept="image/*">
+                        <div class="form-text">Formatos permitidos: JPG, PNG, GIF. Tamaño máximo: 2MB</div>
+                        @error('imagen_evento')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -123,7 +141,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('eventos.show', $evento) }}" class="btn btn-secondary">
+                        <a href="{{ route('eventos.admin.show', $evento) }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left me-1"></i>Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary">

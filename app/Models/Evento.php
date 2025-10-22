@@ -15,7 +15,8 @@ class Evento extends Model
         'fecha_hora_inicio',
         'fecha_hora_fin',
         'municipio',
-        'departamento'
+        'departamento',
+        'imagen_evento'
     ];
 
     protected $casts = [
