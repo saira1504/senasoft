@@ -24,7 +24,7 @@
                 <small class="opacity-75">Encuentra eventos específicos usando los filtros</small>
             </div>
             <div class="card-body">
-                <form method="GET" action="{{ route('eventos.index') }}" class="row g-4">
+                <form method="GET" action="{{ route('eventos.admin.index') }}" class="row g-4">
                     <div class="col-md-3">
                         <label for="fecha" class="form-label fw-bold">
                             <i class="fas fa-calendar-day me-1"></i>Fecha del Evento
@@ -49,7 +49,7 @@
                         <button type="submit" class="btn btn-primary me-2">
                             <i class="fas fa-search me-1"></i>Buscar
                         </button>
-                        <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
+                        <a href="{{ route('eventos.admin.index') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-times me-1"></i>Limpiar
                         </a>
                     </div>
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('eventos.show', $evento) }}" class="btn btn-outline-primary flex-fill">
+                                        <a href="{{ route('eventos.admin.show', $evento) }}" class="btn btn-outline-primary flex-fill">
                                             <i class="fas fa-eye me-1"></i>Ver Detalles
                                         </a>
                                         <a href="{{ route('boletas.index') }}?evento={{ $evento->id }}" class="btn btn-success flex-fill">

@@ -116,7 +116,7 @@
                         </div>
                         <h3 class="gradient-text">{{ \App\Models\Boleta::count() }}</h3>
                         <p class="text-muted mb-0">Boletas Disponibles</p>
-                        <a href="{{ route('boletas.admin.index') }}" class="btn btn-outline-warning btn-sm mt-2">
+                        <a href="{{ route('boletas.index') }}" class="btn btn-outline-warning btn-sm mt-2">
                             <i class="fas fa-shopping-cart me-1"></i>Comprar Boletas
                         </a>
                     </div>
@@ -172,7 +172,7 @@
                             </div>
                             @elseif(Auth::user()->isComprador())
                             <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('eventos.index') }}" class="btn btn-primary w-100 h-100 d-flex flex-column align-items-center justify-content-center py-4">
+                                <a href="{{ route('eventos.admin.index') }}" class="btn btn-primary w-100 h-100 d-flex flex-column align-items-center justify-content-center py-4">
                                     <i class="fas fa-calendar fa-2x mb-2"></i>
                                     <span class="fw-bold">Ver Eventos</span>
                                     <small class="opacity-75">Explorar eventos disponibles</small>

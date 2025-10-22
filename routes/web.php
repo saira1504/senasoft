@@ -62,7 +62,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.admin.destroy');
 
         // Localidades (RF3)
-        Route::resource('localidades', LocalidadController::class);
+       // Localidades (RF3)
+       Route::resource('localidades', LocalidadController::class)
+        ->parameters(['localidades' => 'localidad']);
+
 
         // Artistas (RF4)
         Route::resource('artistas', ArtistaController::class);

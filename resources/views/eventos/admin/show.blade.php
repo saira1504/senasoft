@@ -14,7 +14,7 @@
                 <a href="{{ route('eventos.admin.edit', $evento) }}" class="btn btn-warning">
                     <i class="fas fa-edit me-1"></i>Editar
                 </a>
-                <a href="{{ route('eventos.index') }}" class="btn btn-secondary">
+                <a href="{{ route('eventos.admin.index') }}" class="btn btn-secondary">
                     <i class="fas fa-arrow-left me-1"></i>Volver
                 </a>
             </div>

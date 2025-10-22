@@ -114,7 +114,7 @@
                             <a href="{{ route('compras.historial') }}" class="btn btn-info">
                                 <i class="fas fa-shopping-cart me-2"></i>Historial de Compras
                             </a>
-                            <a href="{{ route('eventos.index') }}" class="btn btn-primary">
+                            <a href="{{ route('eventos.admin.index') }}" class="btn btn-primary">
                                 <i class="fas fa-calendar me-2"></i>Ver Eventos
                             </a>
                             <a href="{{ route('boletas.index') }}" class="btn btn-success">
