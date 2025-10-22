@@ -12,12 +12,34 @@ class CompraController extends Controller
     /**
      * Mostrar el historial de compras del usuario
      */
-    public function historial()
+    public function historial(Request $request)
     {
-        $compras = Auth::user()->compras()
-            ->with(['boleta.evento', 'boleta.localidad'])
-            ->orderBy('created_at', 'desc')
-            ->get();
+        // Validar filtros
+        $request->validate([
+            'fecha' => ['nullable', 'date'],
+            'nombre_evento' => ['nullable', 'string', 'max:100'],
+        ]);
+
+        $query = Auth::user()
+            ->compras()
+            ->with(['boleta.evento', 'boleta.localidad']);
+
+        // Filtro por fecha del evento
+        if ($request->filled('fecha')) {
+            $query->whereHas('boleta.evento', function($q) use ($request) {
+                $q->whereDate('fecha_hora_inicio', $request->fecha);
+            });
+        }
+
+        // Filtro por nombre del evento
+        if ($request->filled('nombre_evento')) {
+            $query->whereHas('boleta.evento', function($q) use ($request) {
+                $q->where('nombre_evento', 'like', '%' . $request->nombre_evento . '%');
+            });
+        }
+
+        // Paginación y conservación de filtros en la URL
+        $compras = $query->latest()->paginate(10)->withQueryString();
 
         return view('compras.historial', compact('compras'));
     }

@@ -16,6 +16,41 @@
                 <i class="fas fa-ticket-alt me-1"></i>Ver Boletas Disponibles
             </a>
         </div>
+         <!-- Filtros para buscar eventos -->
+        <div class="card mb-5 glass-effect">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Buscar Compras</h5>
+                <small class="opacity-75">Encuentra compras específicas usando los filtros</small>
+            </div>
+            <div class="card-body">
+                 <form method="GET" action="{{ route('compras.historial') }}" class="row g-4" id="filtersForm">
+                    <div class="col-md-3">
+                        <label for="fecha" class="form-label fw-bold">
+                            <i class="fas fa-calendar-day me-1"></i>Fecha del Evento
+                        </label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="{{ request('fecha') }}">
+                    </div>
+                   <div class="col-md-3">
+    <label for="nombre_evento" class="form-label fw-bold">
+        <i class="fas fa-music me-1"></i>Nombre del Evento
+    </label>
+    <input type="text" class="form-control" id="nombre_evento" name="nombre_evento"
+           placeholder="Buscar por nombre del evento"
+           value="{{ request('nombre_evento') }}">
+</div>
+
+                   
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary me-2">
+                            <i class="fas fa-search me-1"></i>Buscar
+                        </button>
+                         <a href="{{ route('compras.historial') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-1"></i>Limpiar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         @if($compras->count() > 0)
             <div class="card">
