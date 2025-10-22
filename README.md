@@ -175,7 +175,7 @@ php artisan migrate --seed
 php artisan serve
 
 
-La aplicación estará disponible en 👉 http://localhost:8000
+
 
 🧠 Comandos útiles
 # Limpiar caché
@@ -258,14 +258,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ---
 
-
-### 📋 **Daily Scrum Standup**
-- **⏰ Horario**: 7:00 AM - 7:45 AM (15 minutos exactos)
-- **📍 Formato**: Presencial
-- **❓ Preguntas Clave**:
-  1. ¿Qué completé ayer en las  horas de trabajo?
-  2. ¿Qué planeo hacer hoy en mi bloque de  horas?
-  3. ¿Tengo algún bloqueador que impida mi progreso?
 
 
 
