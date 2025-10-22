@@ -430,7 +430,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fas fa-ticket-alt me-2"></i>EventFlow
+                <i class="fas fa-ticket-alt me-2"></i>Ticket Friends
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -496,7 +496,7 @@
         <div class="container text-center">
             <p class="mb-0">
                 <i class="fas fa-graduation-cap me-1"></i>
-                Sistema de Gestión de Eventos - SENA
+                Sistema de Gestión de Eventos - SENA 2025
             </p>
         </div>
     </footer>

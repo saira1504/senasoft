@@ -8,7 +8,7 @@
         <!-- Hero Section -->
         <div class="text-center mb-5">
             <h1 class="display-4 gradient-text mb-3">
-                <i class="fas fa-ticket-alt me-3"></i>EventFlow
+                <i class="fas fa-ticket-alt me-3"></i>Ticket Friends
             </h1>
             <p class="lead text-muted mb-4">Sistema de Gestión de Eventos y Boletas</p>
             <p class="text-muted">Administra eventos, artistas, localidades y boletas de manera eficiente</p>
