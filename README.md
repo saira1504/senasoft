@@ -1,3 +1,194 @@
+# Gestion de eventos - ticketfriend
+
+Sistema de eventos moderno desarrollado con **metodología SCRUM** por un equipo multidisciplinario de 2 personas, utilizando laravel,php, laragon,javascript,  para el backend y HTML, CSS,boostrap JavaScript para el frontend.
+
+
+## 👥 **EQUIPO DE DESARROLLO Y ROLES ESPECÍFICOS**
+
+### 🔧 **Backend Development**
+- ** saira - Backend Developer Senior & Arquitectura de Datos**
+  - **Rol Principal**:  implementacion del Backend
+
+  - **Responsabilidades Específicas**:
+    - implementación de modelos de base de datos (laragon)
+      - implementación de el backend de la pagina
+    - Optimización de consultas 
+
+### 🎨 **Frontend Development Team**
+
+- **anyi- Frontend Developer senior & Arquitectura de Datos**
+
+  - **Rol Principal**: Especialista UI/UX & Experiencia de Usuario
+
+  - **Responsabilidades Específicas**:
+    - Desarrollo completo de interfaces de usuario
+    - Optimización de performance frontend y experiencia de usuario
+    - Optimización de consultas
+    -creacion de mockups
+
+
+### 📚 **Quality Assurance & Documentation Team**
+
+- **👨‍💻Anyi (chief)-Saira   documentation*
+
+  - **Rol Principal**: Especialista en Calidad y Documentación Técnica
+
+  - **Responsabilidades Específicas**:
+  
+    - Diseño e implementación de casos de uso
+    -diseño  de tablas de base de datos
+    - Documentación técnica completa 
+    - Testing de integración frontend-backend
+    -creacion del repositorio
+
+---
+
+## 🚀 **METODOLOGÍA SCRUM - 5 SPRINTS DE 5 HORAS CADA UNO**
+
+### ⏰ **HORARIO DE TRABAJO SCRUM**
+- **📅 Duración por Sprint**: 5 horas (2 días y medio )
+- **🕐 Horario Diario**: 8:00 AM - 1:00 PM   2:00PM-6:00PM 
+- **☕ Descanso**:  2 Horas aproximadas
+- **⚡ Horas Efectivas**: 10 horas productivas por día
+- **📊 Distribución Sprint**: 5 horas concentradas de desarrollo por sprint
+- **🎯 Total del Proyecto**: 25 horas de desarrollo (5 sprints × 5h)
+
+### 📋 **SPRINT PLANNING DETALLADO**
+
+| Sprint | dias| Horas Totales | 
+|--------|--------|-----------|
+| **Sprint 1** | dia 1  |5h | 
+| **Sprint 2** | dia 1 | 5h | 
+| **Sprint 3** | dia 2 | 5.5h |
+| **Sprint 4** | dia 2 | 8h | 
+| **Sprint 5** |dia 3 | 6h | 
+
+
+### ⚡ **DISTRIBUCIÓN DE 5 HORAS POR SPRINT*
+```
+📊 ENFOQUE INTENSIVO POR SPRINT:
+
+DIA UNO
+
+Sprint 1 (5h): analisis y creacion de casos de uso(modulo_1)
+├── 1h → introduccion al tema del proyecto
+├── 3h → creacion de casos de uso
+├── 1.5h → creacion de modelo de datos con relaciones
+└── 0.5min → Planning Sprint 2
+Estructura base backend/frontend  
+
+Sprint 2 (5h): inicio de backend y front-end (modulo_2)
+├── 0.5h →analisis requerimientos
+├── 4h →creacion del backend,front-end ,mockups
+└── 0.5→Configuración y subida del repositorio y herramientas
+
+DIA 2
+
+Sprint 3 (5.5h): Finalizacion de proyecto
+├── 0.5h → entrega de nuevos requerimientos(analisis)
+├── 4.5h →terminalizacion de mockups y seguimiento de funcionalidades backend/frontend
+
+
+Sprint 4 (8h): terminalizacion de proyecto y despliegue
+├── 7h → Terminalizacion de software
+├── 0.5h → Pruebas usuario y ultimos detalles
+├── 0.5h → documentacion final y despliegue 
+
+
+Sprint 5 (6h): preparacion de elevator pitch 
+├── 6h → preparacion de diapositivas y dialogo
+
+
+
+**Total: 29.5 horas de desarrollo concentrado en 3 dias**
+
+## 📁 **ESTRUCTURA DEL PROYECTO**
+
+```
+
+---
+
+## 🔧 **TECNOLOGÍAS UTILIZADAS**
+
+### 🔧 **Backend Stack**
+
+### 🎨 **Frontend Stack**
+- **HTML5** - Estructura semántica
+- **CSS** - Estilos modernos
+- **JavaScript ** - Lógica del cliente
+- **Bootstrap 5** - Framework UI
+- **Font Awesome** - Iconografía
+- **sweet alert** alertas
+
+### 🛠️ **Development Tools**
+- **Git & GitHub** - Control de versiones
+- **VS Code** - IDE
+- **Postman** - Testing de API
+- **Laragon** - Models
+
+
+---
+
+### ⚡ **Instalación Rápida**
+Sigue estos pasos para ejecutar el proyecto localmente en tu máquina.
+
+🔧 Requisitos previos
+
+Asegúrate de tener instalado:
+
+PHP >= 8.1
+
+Composer
+
+Node.js y NPM
+
+MySQL o MariaDB
+
+Git
+
+⚙️ Pasos de instalación
+# 1️⃣ Clonar el repositorio
+git clone https://github.com/usuario/nombre-del-proyecto.git
+
+# 2️⃣ Entrar al directorio del proyecto
+cd nombre-del-proyecto
+
+# 3️⃣ Instalar dependencias de PHP
+composer install
+
+# 4️⃣ Instalar dependencias de Node.js
+npm install && npm run build
+
+# 5️⃣ Crear el archivo de entorno
+cp .env.example .env
+
+# 6️⃣ Generar la clave de la aplicación
+php artisan key:generate
+
+# 7️⃣ Configurar la base de datos en el archivo .env
+# (Edita las variables DB_DATABASE, DB_USERNAME, DB_PASSWORD)
+
+# 8️⃣ Ejecutar migraciones y seeders
+php artisan migrate --seed
+
+# 9️⃣ Iniciar el servidor local
+php artisan serve
+
+
+La aplicación estará disponible en 👉 http://localhost:8000
+
+🧠 Comandos útiles
+# Limpiar caché
+php artisan optimize:clear
+
+# Actualizar dependencias
+composer update
+npm update
+
+# Ejecutar pruebas
+php artisan test
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -62,3 +253,36 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+```
+
+---
+
+
+### 📋 **Daily Scrum Standup**
+- **⏰ Horario**: 7:00 AM - 7:45 AM (15 minutos exactos)
+- **📍 Formato**: Presencial
+- **❓ Preguntas Clave**:
+  1. ¿Qué completé ayer en las  horas de trabajo?
+  2. ¿Qué planeo hacer hoy en mi bloque de  horas?
+  3. ¿Tengo algún bloqueador que impida mi progreso?
+
+
+
+
+## 🏆 **RECONOCIMIENTOS**
+
+- **Metodología SCRUM** implementada exitosamente
+- **Colaboración efectiva** entre el equipo multidisciplinario
+- **documentacion** mantenida a lo largo del proyecto
+- **Documentación exhaustiva** para escalabilidad futura
+
+---
+
+<div align="center">
+
+**Desarrollado con ❤️ por el Team numero 18**
+
+
+</div>
+
