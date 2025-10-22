@@ -51,7 +51,7 @@ Sistema de eventos moderno desarrollado con **metodología SCRUM** por un equipo
 - **☕ Descanso**:  2 Horas aproximadas
 - **⚡ Horas Efectivas**: 10 horas productivas por día
 - **📊 Distribución Sprint**: 5 horas concentradas de desarrollo por sprint
-- **🎯 Total del Proyecto**: 25 horas de desarrollo (5 sprints × 5h)
+- **🎯 Total del Proyecto**: 29.5 horas de desarrollo 
 
 ### 📋 **SPRINT PLANNING DETALLADO**
 
