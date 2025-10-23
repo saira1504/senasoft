@@ -8,14 +8,20 @@
 
         {{-- HERO --}}
         <div class="text-center mb-5">
-            <h1 class="display-4 gradient-text mb-3">
-                <i class="fas fa-ticket-alt me-3"></i>Ticket Friends
-            </h1>
+           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=local_activity" />
+
+<h1 class="display-4 gradient-text mb-3">
+    <span class="material-symbols-outlined align-middle me-2" style="font-size: 45px;">
+        
+    </span>
+    Ticket Friends
+</h1>
+
 
 
             @auth
                 <p class="text-muted">
-                    Bienvenido, {{ Auth::user()->name }}. Administra eventos, artistas, localidades y boletas de manera eficiente.
+                    Bienvenido, {{ Auth::user()->name }}. Disfruta de los mejores eventos con ticket friends,boletas limitadas ¡No te quedes por fuera!.
                 </p>
             @else
                 
@@ -27,10 +33,13 @@
             <section class="container my-5">
                 <div class="d-flex justify-content-between align-items-end mb-3">
                     <div>
+                        <center>
                         <h3 class="mb-1">
                             Próximos eventos
                         </h3>
-                        <p class="text-muted mb-0">Con Ticket Friends, cada evento es una nueva historia. ¡Compra tus boletas y sé parte del momento!</p>
+                        
+                        <p class="text-muted mb-0">Con Ticket Friends, cada evento es una nueva historia. ¡Compra tus boletas y sé parte del momento! Confirma tu boleta nos vemos en el evento🎉</p>
+                        </center>
                     </div>
                     
                 </div>
@@ -116,7 +125,7 @@
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-calendar fa-3x text-primary"></i></div>
+                                <div class="mb-3"><i class="fas fa-calendar fa-3x text-tertiary-bg"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Evento::count() }}</h3>
                                 <p class="text-muted mb-0">Eventos Activos</p>
                                 <a href="{{ route('eventos.admin.index') }}" class="btn btn-outline-primary btn-sm mt-2">
@@ -128,10 +137,10 @@
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-music fa-3x text-info"></i></div>
+                                <div class="mb-3"><i class="fas fa-music fa-3x text-tertiary-bg"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Artista::count() }}</h3>
                                 <p class="text-muted mb-0">Artistas Registrados</p>
-                                <a href="{{ route('artistas.index') }}" class="btn btn-outline-info btn-sm mt-2">
+                                <a href="{{ route('artistas.index') }}" class="btn btn-outline-primary btn-sm mt-2">
                                     <i class="fas fa-eye me-1"></i>Ver Artistas
                                 </a>
                             </div>
@@ -140,10 +149,10 @@
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-map-marker-alt fa-3x text-success"></i></div>
+                                <div class="mb-3"><i class="fas fa-map-marker-alt fa-3x text-tertiary-bg"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Localidad::count() }}</h3>
                                 <p class="text-muted mb-0">Localidades</p>
-                                <a href="{{ route('localidades.index') }}" class="btn btn-outline-success btn-sm mt-2">
+                                <a href="{{ route('localidades.index') }}" class="btn btn-outline-primary btn-sm mt-2">
                                     <i class="fas fa-eye me-1"></i>Ver Localidades
                                 </a>
                             </div>
@@ -152,10 +161,10 @@
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-ticket-alt fa-3x text-warning"></i></div>
+                                <div class="mb-3"><i class="fas fa-ticket-alt fa-3x text-tertiary-bg"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Boleta::count() }}</h3>
                                 <p class="text-muted mb-0">Tipos de Boletas</p>
-                                <a href="{{ route('boletas.index') }}" class="btn btn-outline-warning btn-sm mt-2">
+                                <a href="{{ route('boletas.index') }}" class="btn btn-outline-primary btn-sm mt-2">
                                     <i class="fas fa-eye me-1"></i>Ver Boletas
                                 </a>
                             </div>
