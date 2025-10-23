@@ -11,7 +11,7 @@
             <h1 class="display-4 gradient-text mb-3">
                 <i class="fas fa-ticket-alt me-3"></i>Ticket Friends
             </h1>
-            <p class="lead text-muted mb-4">Sistema de Gestión de Eventos y Boletas</p>
+
 
             @auth
                 <p class="text-muted">
@@ -28,13 +28,11 @@
                 <div class="d-flex justify-content-between align-items-end mb-3">
                     <div>
                         <h3 class="mb-1">
-                            <i class="fas fa-bolt me-2 text-warning"></i>Próximos eventos
+                            Próximos eventos
                         </h3>
-                        <p class="text-muted mb-0">Explora lo que viene y compra tus boletas</p>
+                        <p class="text-muted mb-0">Con Ticket Friends, cada evento es una nueva historia. ¡Compra tus boletas y sé parte del momento!</p>
                     </div>
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary">
-                        <i class="fas fa-user-lock me-1"></i>Inicia sesión para comprar
-                    </a>
+                    
                 </div>
 
                 @if(isset($eventos) && $eventos->count())
