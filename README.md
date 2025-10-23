@@ -118,8 +118,7 @@ Sprint 5 (6h): preparacion de elevator pitch
 - **CSS** - Estilos modernos
 - **JavaScript ** - Lógica del cliente
 - **Bootstrap 5** - Framework UI
-- **Font Awesome** - Iconografía
-- **sweet alert** alertas
+- **material icons** - Iconografía
 
 ### 🛠️ **Development Tools**
 - **Git & GitHub** - Control de versiones
