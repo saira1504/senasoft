@@ -102,7 +102,6 @@ Sprint 5 (6h): preparacion de elevator pitch
 
 **Total: 29.5 horas de desarrollo concentrado en 3 dias**
 
-## 📁 **ESTRUCTURA DEL PROYECTO**
 
 ```
 
@@ -111,7 +110,9 @@ Sprint 5 (6h): preparacion de elevator pitch
 ## 🔧 **TECNOLOGÍAS UTILIZADAS**
 
 ### 🔧 **Backend Stack**
-
+- **laravel** 
+- **php** 
+- **JavaScript ** 
 ### 🎨 **Frontend Stack**
 - **HTML5** - Estructura semántica
 - **CSS** - Estilos modernos
