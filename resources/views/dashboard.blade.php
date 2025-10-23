@@ -177,7 +177,7 @@
                     <div class="col-lg-6 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-calendar fa-3x text-primary"></i></div>
+                                <div class="mb-3"><i class="fas fa-calendar fa-3x text-emphasis-color"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Evento::count() }}</h3>
                                 <p class="text-muted mb-0">Eventos Disponibles</p>
                                 <a href="{{ route('eventos.admin.index') }}" class="btn btn-outline-primary btn-sm mt-2">
@@ -189,10 +189,10 @@
                     <div class="col-lg-6 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <div class="mb-3"><i class="fas fa-ticket-alt fa-3x text-warning"></i></div>
+                                <div class="mb-3"><i class="fas fa-ticket-alt fa-3x text-emphasis-color"></i></div>
                                 <h3 class="gradient-text">{{ \App\Models\Boleta::count() }}</h3>
                                 <p class="text-muted mb-0">Boletas Disponibles</p>
-                                <a href="{{ route('boletas.index') }}" class="btn btn-outline-warning btn-sm mt-2">
+                                <a href="{{ route('boletas.index') }}" class="btn btn-outline-primary btn-sm mt-2">
                                     <i class="fas fa-shopping-cart me-1"></i>Comprar Boletas
                                 </a>
                             </div>
